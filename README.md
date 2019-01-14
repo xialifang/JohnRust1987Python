@@ -14,4 +14,4 @@ JohnRust1987Python is a python implementation of Nested Fixed Point Approach (NF
 &nbsp;
 ## Structure
 1. main.py: 
-   - data generation based on John Rust 1987 paper
+   - Compute and present continuation value function $EV(x, i, \theta)$
