@@ -21,7 +21,7 @@ JohnRust1987Python is a python implementation of Nested Fixed Point Approach (NF
 2. Engine.py:
    - parent class Engine, which contains methods of data simulation, solving EV (contraction mapping) and calculating choice probability 
 3. JohnRust.py:
-   - child class JohnRust, which implements Nested Fixed Point Approach and counterfactual analysis
+   - child class JohnRust, which inherits Engine. It implements Nested Fixed Point Approach and counterfactual analysis
    
 &nbsp;
 ## Reference
