@@ -24,6 +24,7 @@ def main():
     maintainCostArray = pset.getMaintainCost(stateArray, theta)
     meanUtil = pset.getMeanUtil(replaceCost, maintainCostArray)
     
+    ## solve continuation value function EV
     expectValue = pset.solveExpectValue(meanUtil = meanUtil, probIncrement=probIncrement)    
     pset.getExpectValuePlot(expectValue)
     
