@@ -14,4 +14,4 @@ JohnRust1987Python is a python implementation of Nested Fixed Point Approach (NF
 &nbsp;
 ## Structure
 1. main.py: 
-   - Compute and present continuation value function $EV(x, i, \theta)$
+   - Compute and plot continuation value function <a href="https://www.codecogs.com/eqnedit.php?latex=$EV(x,&space;i,&space;\theta)$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$EV(x,&space;i,&space;\theta)$" title="$EV(x, i, \theta)$" /></a>
