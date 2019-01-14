@@ -30,7 +30,6 @@ def main():
     
     probChoice = pset.getProbChoice(meanUtil, expectValue)
     
-    
     ## data simulation 
     time = 1000
     numBus = 100
@@ -38,10 +37,9 @@ def main():
     pset.getProbIncrementHat(stateSimulation, replaceSimulation);
     pset.getOutputFile(time, numBus, stateSimulation, replaceSimulation)
     
-    ## NFP estimation
+    ## NFPA estimation
     pset.getParamNFPA(numState, stateSimulation, replaceSimulation)
-    
-    
+        
     ## counterfactual analysis
     theta = 0.02
     path, demand, replaceSimulationArray, stateSimulationArray = pset.getDemand(theta, time, numBus)
