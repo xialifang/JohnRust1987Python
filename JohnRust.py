@@ -17,6 +17,7 @@ class JohnRust(Engine):
     def __init__(self, numState):
         Engine.__init__(self, numState)
     
+    
     def getProbIncrementHat(self, stateSimulation, replaceSimulation):
          ## step 1 outer loop: estimate transition probability 
         stateDiff = np.diff(stateSimulation, axis = -1)
@@ -28,10 +29,8 @@ class JohnRust(Engine):
         for j in [0, 1, 2]:
             self.probIncrementHat.append(np.sum(stateCondDiff == j) / len(stateCondDiff))
         
-    
         
-    def getParamNFPA(self, numState, stateSimulation, replaceSimulation):
-        
+    def getParamNFPA(self, numState, stateSimulation, replaceSimulation):      
         ## step 2 inner loop: estimate transition probability
         x0 = [0.1 for i in range(2)]
         bounds = [(0, None) for i in range(2)]
@@ -41,11 +40,9 @@ class JohnRust(Engine):
         print(self.fitted[0])
         print(self.fitted[1])
         
-
-
+        
     def logLikelihood(self, params, numState , stateSimulation , replaceSimulation 
                           , probIncrementHat):
-
         theta = params[0]
         replaceCost = params[1]
         
@@ -57,8 +54,7 @@ class JohnRust(Engine):
         meanUtil = self.getMeanUtil(replaceCost, maintainCostArray)
         expectValue = self.solveExpectValue(meanUtil = meanUtil, probIncrement=probIncrementHat)
         probChoice = self.getProbChoice(meanUtil, expectValue)
-                    
-        
+                            
         logLikelihood = 0
         
         for i in range(numBus):
@@ -70,8 +66,7 @@ class JohnRust(Engine):
 
         return -logLikelihood  
     
-    
-    
+      
     def getDemand(self, theta, time, numBus):
         stateArray = self.getStateArray()
         maintainCostArray = self.getMaintainCost(stateArray, theta)
@@ -80,8 +75,7 @@ class JohnRust(Engine):
         demand = np.zeros((length, time - 1))
         replaceSimulationArray = np.zeros((length, numBus, time - 1))
         stateSimulationArray = np.zeros((length, numBus, time - 1))
-
-        
+   
         for i, replaceCost in enumerate(path):
             meanUtil = self.getMeanUtil(replaceCost, maintainCostArray)
             expectValue = self.solveExpectValue(meanUtil, self._probIncrement)
@@ -103,10 +97,8 @@ class JohnRust(Engine):
         return path, demand, replaceSimulationArray, stateSimulationArray
         
     
-    
     def getTotalValue(self, theta, demand, path, 
-                  replaceSimulationArray, stateSimulationArray):
-        
+                  replaceSimulationArray, stateSimulationArray):        
         if theta == 0.05:
             mc = 10
         if theta == 0.02:
@@ -118,7 +110,7 @@ class JohnRust(Engine):
         replaceSimulation = replaceSimulationArray[path == mc, :, :].reshape(numBus, time)
         stateSimulation = stateSimulationArray[path == mc, :, :].reshape(numBus, time)
             
-        utilFlow =  (replaceSimulation==1) *  (- self._replaceCost) \
+        utilFlow =  (replaceSimulation==1) *  (- self._replaceCost) 
                        +  (replaceSimulation==0) * (- stateSimulation * self._theta)
                         
         ## discounted sum of flow utility                
