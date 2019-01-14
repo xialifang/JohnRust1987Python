@@ -28,8 +28,7 @@ class Engine():
         """
         return  self._probIncrement, self._theta, self._replaceCost, self._numState       
     
-    
-    
+       
     def solveExpectValue(self, meanUtil, probIncrement):
         """
         Use: compute expected value for each possible decision and each possible 
@@ -59,8 +58,7 @@ class Engine():
                 ## sum over state 
                 evNew[:, i] = evTemp @ probTransition + euler 
                 #evNew[:, i] = evTemp @ probTransition + meanUtil.copy()[:, i]
-                
-                
+                           
             iterTime += 1
             if iterTime == 10000:
                 achieved = False
@@ -73,8 +71,6 @@ class Engine():
         return evNew                
                         
     
-
-
     def getStateArray(self):
         """
         Input: numState, an int
@@ -84,7 +80,6 @@ class Engine():
         return stateArray
         
         
-
     def getMaintainCost(self, stateArray, theta):
         """
         Use: calculate the cost of maintanence 
@@ -112,8 +107,7 @@ class Engine():
         
         return meanUtil
         
-            
-        
+                  
     def getProbTransition(self, probIncrementList, replace):
         """
         Use: calculate the probability of transition
@@ -140,8 +134,7 @@ class Engine():
                                         np.zeros((self._numState-1, self._numState))))                               
         return probTransArray                  
             
-    
-    
+     
     def getProbChoice(self, meanUtil, expectValue):
         """
         Use: calculate the probability of replacement or not
@@ -160,8 +153,6 @@ class Engine():
             self.probChoiceArray[:, i] = 1 / expSumUtil
         #print(self.probChoiceArray)
         return self.probChoiceArray
-    
-    
     
     
     def getExpectValuePlot(self, expectValue):
@@ -246,7 +237,6 @@ class Engine():
     
         return stateArray,  replaceArray   
               
-    
     
     def getOutputFile(self, time, numBus, stateSimulation, replaceSimulation):
         """
