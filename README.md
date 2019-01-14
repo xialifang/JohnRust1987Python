@@ -1,4 +1,4 @@
-# JohnRust1987
+# JohnRust1987Python
 
 | INTRODUCTION  | README |
 | :-----: | :------: |
@@ -9,3 +9,4 @@
 
 &nbsp;
 ## Description
+JohnRust1987
